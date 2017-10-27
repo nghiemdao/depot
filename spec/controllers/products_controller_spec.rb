@@ -140,6 +140,13 @@ RSpec.describe ProductsController, type: :controller do
       delete :destroy, params: {id: product.to_param}, session: valid_session
       expect(response).to redirect_to(products_url)
     end
+
+    it "can't delete product in cart" do
+      line_item = create(:line_item)
+      expect {
+        delete :destroy, params: {id: line_item.product.id }, session: valid_session
+      }.to_not change(Product, :count)
+    end
   end
 
 end
