@@ -4,13 +4,13 @@ RSpec.feature "AddProductToCarts", type: :feature do
   it "should add product to cart" do
     product = create(:product)
 
-    visit store_index_url
-
-    expect {
+    3.times do 
+      visit store_index_url
+      
       first('.button_to input[type=submit]').click
-    }.to change(LineItem, :count).by(1)
+    end
 
-    assert_selector 'h2', 'Your Pragmatic Cart'
-    assert_selector 'li', product.title
+    assert_selector 'h2', text: 'Your Pragmatic Cart'
+    assert_selector 'li', text: "3 × #{product.title}"
   end
 end

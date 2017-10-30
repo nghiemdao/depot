@@ -10,10 +10,10 @@ RSpec.describe "products/index", type: :view do
 
   it "renders a list of products" do
     render
-    assert_select "tr>td", :text => "Product 1".to_s, :count => 1
-    assert_select "tr>td", :text => "Product 2".to_s, :count => 1
-    assert_select "td>dl>dd", :text => "MyText".to_s, :count => 2
-    assert_select "img", :url => "7apps.jpg".to_s, :count => 2
-    assert_select "td>dl>dt", :text => "9.99".to_s, :count => 2
+    assert_select "tr>td", :text => "Product 1", :count => 1
+    assert_select "tr>td", :text => "Product 2", :count => 1
+    assert_select "td>dl>dd", :text => "MyText", :count => 2
+    assert_select "img", :url => "7apps.jpg", :count => 2
+    assert_select "td>dl>dt", :text => "9.99", :count => 2
   end
 end
