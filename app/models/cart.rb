@@ -12,4 +12,8 @@ class Cart < ApplicationRecord
 
     line_item
   end
+
+  def total_price
+    line_items.map(&:total_price).inject(0, :+)
+  end
 end

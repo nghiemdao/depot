@@ -10,7 +10,7 @@ RSpec.feature "AddProductToCarts", type: :feature do
       first('.button_to input[type=submit]').click
     end
 
-    assert_selector 'h2', text: 'Your Pragmatic Cart'
-    assert_selector 'li', text: "3 × #{product.title}"
+    assert_selector 'h2', text: 'Your Cart'
+    assert_selector 'td', text: product.title
   end
 end
