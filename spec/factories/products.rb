@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :product do
     title "Lorem Ipsum"
     description "Wibbles are fun!"
