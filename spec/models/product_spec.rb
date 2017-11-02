@@ -33,11 +33,11 @@ RSpec.describe Product, type: :model do
   end
 
   it "product is not valid without a unique title" do
-    create(:product)
+    product = create(:product)
 
-    product = build(:product)
+    dump_product = build(:product, title: product.title)
 
-    expect(product.invalid?).to be_truthy
-    expect(product.errors[:title]).to eq([I18n.t('errors.messages.taken')])
+    expect(dump_product.invalid?).to be_truthy
+    expect(dump_product.errors[:title]).to eq([I18n.t('errors.messages.taken')])
   end
 end
