@@ -43,6 +43,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'rails-controller-testing'
   gem 'capybara'
+  gem 'faker'
 end
 
 group :development do
