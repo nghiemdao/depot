@@ -7,7 +7,7 @@ RSpec.feature "AddProductToCarts", type: :feature do
     3.times do 
       visit store_index_url
       
-      first('.button_to input[type=submit]').click
+      first('.entry .button_to input[type=submit]').click
     end
 
     assert_selector 'h2', text: 'Your Cart'
