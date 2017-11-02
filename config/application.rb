@@ -29,6 +29,7 @@ module Depot
     config.generators.system_tests = nil
 
     config.generators do |g|
+      g.test_framework :rspec
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
   end
