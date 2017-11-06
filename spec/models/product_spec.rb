@@ -40,4 +40,12 @@ RSpec.describe Product, type: :model do
     expect(dump_product.invalid?).to be_truthy
     expect(dump_product.errors[:title]).to eq([I18n.t('errors.messages.taken')])
   end
+
+  it "get latest order" do
+    product = create(:product)
+    order = create(:order) 
+    line_item = create(:line_item, product: product, cart: nil, order: order)
+
+    expect(product.latest_order.id).to eq(order.id)
+  end
 end

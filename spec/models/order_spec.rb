@@ -17,4 +17,12 @@ RSpec.describe Order, type: :model do
     expect(order.invalid?).to be_truthy
     expect(order.errors[:pay_type]).to eq([I18n.t('errors.messages.inclusion')])
   end
+
+  it "calculate total price" do
+    product = create(:product)
+    order = create(:order)
+    create_list(:line_item, 3, product: product, order: order, cart: nil)
+
+    expect(order.total_price).to eq(product.price * 3)
+  end
 end

@@ -1,4 +1,7 @@
 class Order < ApplicationRecord
+  scope :ordered, -> { order(updated_at: :desc) }
+  scope :latest, -> { ordered.last }
+
   enum pay_type: {
     'Check'          => 0,
     'Credit card'    => 1,
@@ -15,5 +18,9 @@ class Order < ApplicationRecord
       item.cart_id = nil
       line_items << item
     end
+  end
+
+  def total_price
+    line_items.map(&:total_price).sum
   end
 end

@@ -148,5 +148,4 @@ RSpec.describe ProductsController, type: :controller do
       }.to_not change(Product, :count)
     end
   end
-
 end
