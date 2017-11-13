@@ -40,6 +40,10 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  rescue_from User::Error do |exception|
+    redirect_to users_url, notice: exception.message
+  end
+
   private
 
   def user_params

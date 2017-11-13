@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature "CreateANewUsers", type: :feature do
+  setup
+  
   it "success" do
     visit new_user_path
 

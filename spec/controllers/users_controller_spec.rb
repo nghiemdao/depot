@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
+  setup 
+  
   it "should create user" do
     expect {
       post :create, params: { user: attributes_for(:user) }
     }.to change(User, :count).by(1)
-
+    p response.body
     expect(response).to redirect_to users_url
   end
 

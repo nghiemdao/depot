@@ -44,6 +44,8 @@ RSpec.describe ProductsController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
+    setup
+
     it "returns a success response" do
       product = Product.create! valid_attributes
       get :index, params: {}, session: valid_session
@@ -52,6 +54,8 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "GET #show" do
+    setup
+
     it "returns a success response" do
       product = Product.create! valid_attributes
       get :show, params: {id: product.to_param}, session: valid_session
@@ -60,6 +64,8 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "GET #new" do
+    setup
+
     it "returns a success response" do
       get :new, params: {}, session: valid_session
       expect(response).to be_success
@@ -67,6 +73,8 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "GET #edit" do
+    setup
+
     it "returns a success response" do
       product = Product.create! valid_attributes
       get :edit, params: {id: product.to_param}, session: valid_session
@@ -75,6 +83,8 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "POST #create" do
+    setup
+
     context "with valid params" do
       it "creates a new Product" do
         expect {
@@ -97,6 +107,8 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "PUT #update" do
+    setup 
+
     context "with valid params" do
       let(:new_attributes) {
         {
@@ -128,6 +140,8 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
+    setup 
+    
     it "destroys the requested product" do
       product = Product.create! valid_attributes
       expect {
