@@ -1,0 +1,13 @@
+<h1>Orders</h1>
+
+<table class="orders_list">
+  <% @orders.each do |order| %>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+    <td><%= order.name %></td>
+    <td><%= order.address %></td>
+    <td><%= order.email %></td>
+    <td><%= order.pay_type %></td>
+    <td><%= order.updated_at.to_date %></td>
+  </tr>
+  <% end %>
+</table>
