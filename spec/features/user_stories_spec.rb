@@ -7,7 +7,7 @@ RSpec.feature "UserStories", type: :feature do
 
     visit store_index_path
 
-    expect(page).to have_content 'Your Catalog'
+    expect(page).to have_content I18n.t('store.index.title_html')
 
     first('.entry .button_to input[type=submit]').click
     
@@ -18,13 +18,13 @@ RSpec.feature "UserStories", type: :feature do
 
     visit new_order_path
     
-    expect(page).to have_content 'Please Enter Your Details'
+    expect(page).to have_content I18n.t('orders.new.legend')
     
     fill_in 'order[name]', with: 'Foo Bar'
     fill_in 'order[address]', with: 'Address example'
     fill_in 'order[email]', with: 'foo@bar.com'
     select 'Check', from: 'order[pay_type]'
-    click_on 'Place Order'
+    click_on I18n.t('orders.form.submit')
 
     expect(page).to have_current_path(store_index_path)
     expect(cart.line_items.size).to eq(0)

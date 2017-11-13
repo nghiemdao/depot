@@ -10,6 +10,13 @@
 
   <body class="<%= controller.controller_name %>">
     <div id="banner">
+      <%= form_with url: store_index_path, class: 'locale' do %>
+        <%= select_tag 'set_locale',
+          options_for_select(LANGUAGES, I18n.locale.to_s),
+          onchange: 'this.form.submit()' %>
+          <%= submit_tag 'submit' %>
+          <%= javascript_tag "$('.locale input').hide()" %>
+      <% end %>
       <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
       <span class="title"><%= @page_title %></span>
     </div>
@@ -21,10 +28,10 @@
           <% end %>
         <% end %>
         <ul>
-          <li><a href="<%= store_index_path %>">Home</a></li>
-          <li><a href="#">Questions</a></li>
-          <li><a href="">News</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="<%= store_index_path(locale: I18n.locale) %>"><%= t('.home') %></a></li>
+          <li><a href="#"><%= t('.questions') %></a></li>
+          <li><a href=""><%= t('.news') %></a></li>
+          <li><a href="#"><%= t('.contact') %></a></li>
         </ul>
         <% if session[:user_id] %>
         <ul>

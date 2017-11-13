@@ -18,7 +18,7 @@ RSpec.describe "Orders", type: :request do
     }.to change(Order, :count).by(1)
     
     expect(response).to redirect_to store_index_url
-    expect(flash[:notice]).to eq('Thank you for your order.')
+    expect(flash[:notice]).to eq(I18n.t('.thanks'))
   end
 
   it "should not create an order" do
